@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class JDate {
     /** Instance of logger for JDate class*/
@@ -16,24 +17,40 @@ public class JDate {
     /** Exit operation of JFrame Window */
     private final int exitOperation;
     /** Width of JFrame Window */
-    private final int width;
+    private final double width;
     /** Height of JFrame Window */
-    private final int height;
+    private final double height;
+    /** Width of user's primary screen */
+    private final double userScreenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    /** Height of user's primary screen */
+    private final double userScreenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-    public JDate(String name, int width, int height) {
+    /** If the JFrame window is visible or not */
+    private boolean isVisible;
+
+    public JDate(String name) {
+        this(name,Toolkit.getDefaultToolkit().getScreenSize().getWidth(), Toolkit.getDefaultToolkit().getScreenSize().getHeight(),JFrame.EXIT_ON_CLOSE,true);
+    }
+
+    public JDate(String name, double width, double height) {
         this(name, width, height, JFrame.EXIT_ON_CLOSE);
     }
 
-    public JDate(String name, int width, int height, int exitOperation) {
+    public JDate(String name, double width, double height, int exitOperation) {
+        this(name,width,height,exitOperation,true);
+    }
+
+    public JDate(String name, double width, double height, int exitOperation, boolean isVisible) {
         this.name = name;
         this.exitOperation = exitOperation;
         this.width = width;
         this.height = height;
+        this.isVisible = isVisible;
 
         JFrame frame = new JFrame(name);
         frame.setDefaultCloseOperation(exitOperation);
-        frame.setSize(width,height);
-        frame.setVisible(true);
+        frame.setSize((int) width,(int) height);
+        frame.setVisible(isVisible);
     }
 
     public void runGame() {
@@ -53,10 +70,23 @@ public class JDate {
     public int getExitOperation() {
         return this.exitOperation;
     }
-    public int getWidth() {
+    public double getWidth() {
         return this.width;
     }
-    public int getHeight() {
+    public double getHeight() {
         return this.height;
+    }
+    public boolean isVisible() {
+        return this.isVisible;
+    }
+    public double getUserScreenWidth() {
+        return this.userScreenWidth;
+    }
+    public double getGetUserScreenHeight() {
+        return this.userScreenHeight;
+    }
+
+    public void setVisible(boolean isVisible) {
+        this.isVisible = isVisible;
     }
 }
