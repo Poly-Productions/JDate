@@ -33,10 +33,22 @@ public class JDate {
     /**List of all game characters*/
     private final ArrayList<Character> characters = new ArrayList<>();
 
+    /**
+     * Creates a JDate object called the given title.
+     * Defaults JFrame window to user Screen size.
+     * @param name Name of window.
+     */
     public JDate(String name) {
         this(name,Toolkit.getDefaultToolkit().getScreenSize().getWidth(), Toolkit.getDefaultToolkit().getScreenSize().getHeight(),JFrame.EXIT_ON_CLOSE,true);
     }
 
+    /**
+     * Creates a JDate Object called the given title, and sets the JFrame window to the passed
+     * Width and Height.
+     * @param name Name of JDate Object.
+     * @param width Width of JFrame Window.
+     * @param height Height of JFrame Window.
+     */
     public JDate(String name, double width, double height) {
         this(name, width, height, JFrame.EXIT_ON_CLOSE);
     }
