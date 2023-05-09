@@ -10,6 +10,7 @@ public class Tests {
     private static final int WIDTH = 200;
     private static final int HEIGHT = 200;
 
+
     private static void testConstructors() {
         LOGGER.info("Testing Constructor JDate(String name);");
         try {

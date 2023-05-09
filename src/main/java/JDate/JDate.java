@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class JDate {
     /** Instance of logger for JDate class*/
@@ -27,6 +29,9 @@ public class JDate {
 
     /** If the JFrame window is visible or not */
     private boolean isVisible;
+
+    /**List of all game characters*/
+    private final ArrayList<Character> characters = new ArrayList<>();
 
     public JDate(String name) {
         this(name,Toolkit.getDefaultToolkit().getScreenSize().getWidth(), Toolkit.getDefaultToolkit().getScreenSize().getHeight(),JFrame.EXIT_ON_CLOSE,true);
@@ -61,6 +66,15 @@ public class JDate {
                         "\\___/____/\\_,_/\\__/\\__/ \n" +
                         "                        "
         );
+
+        if (characters.isEmpty()) {
+            LOGGER.warn("Warning there are no characters!");
+        }
+
+    }
+
+    public void addCharacter(Character... character) {
+        characters.addAll(Arrays.asList(character));
     }
 
     // -GETTERS / SETTERS-
@@ -84,6 +98,9 @@ public class JDate {
     }
     public double getGetUserScreenHeight() {
         return this.userScreenHeight;
+    }
+    public ArrayList<Character> getCharacters() {
+        return this.characters;
     }
 
     public void setVisible(boolean isVisible) {
