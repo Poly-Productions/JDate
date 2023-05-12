@@ -1,6 +1,6 @@
 // JDate Character Class
 // @Auth v0ncent
-package JDate;
+package JDate.Characters;
 
 import java.util.ArrayList;
 import java.util.Objects;
